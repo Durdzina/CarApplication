@@ -12,7 +12,8 @@ public:
 private:
 	vector<Car> productList = {};
 	vector<Tire> productListTire = {};
-	void displayProducts();
+	void displayCars();
+	void displayTires();
 	void deleteCar();
 	void addCar();
 	void addTire();

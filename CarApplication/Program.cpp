@@ -9,31 +9,36 @@ void program::start()
 	while (true)
 	{
 		cout << "Wybierz opcje: " << endl;
-		cout << "1. Wyswietl wszyskie produkty" << endl;
-		cout << "2. Dodaj auto" << endl;
-		cout << "3. Usun auto" << endl;
+		cout << "1. Wyswietl wszystkie auta" << endl;
+		cout << "2. Wyswietl wszystkie opony" << endl;
+		cout << "3. Dodaj auto" << endl;
 		cout << "4. Dodaj opone" << endl;
-		cout << "5. Usun opone" << endl;
+		cout << "5. Usun auto" << endl;
+		cout << "6. Usun opone" << endl;
 		cout << "Wybierz: " << endl;
 		cin >> input;
 
 		switch (input)
 		{
 		case 1:
-			displayProducts();
+			displayCars();
+			break;
+
+		case 2:
+			displayTires();
 			break;
 			
-		case 2:
+		case 3:
 			addCar();
 			break;
 
-		case 3:
-			deleteCar();
-			break;
 		case 4:
 			addTire();
 			break;
 		case 5:
+			deleteCar();
+			break;
+		case 6:
 			deleteTire();
 			break;
 		default:
@@ -43,12 +48,34 @@ void program::start()
 	}
 }
 
-void program::displayProducts()
+void program::displayCars()
 {
-	cout << "Lista wszystkich produktow:" << endl;
+	if (productList.size() == 0)
+	{
+		cout << "Brak aut." << endl;
+	}
+	else
+	{
+		cout << "Lista wszystkich aut:" << endl;
+	}
 	for (int i = 0; i < productList.size(); i++)
 	{
-		cout << productList[i].toString();
+		cout << productListTire[i].toString();
+	}
+}
+void program::displayTires()
+{	
+	if (productListTire.size() == 0)
+	{
+		cout << "Brak opon." << endl;
+	}
+	else
+	{
+		cout << "Lista wszystkich opon:" << endl;
+	}
+	for (int i = 0; i < productListTire.size(); i++)
+	{
+		cout << productListTire[i].toString();
 	}
 }
 void program::addCar()
@@ -73,18 +100,18 @@ void program::addCar()
 void program::deleteCar()
 {
 	int id;
-	cout << "Podaj ID produktu do usuniecia: ";
+	cout << "Podaj ID auta do usuniecia: " << endl;
 	cin >> id;
 
 	auto it = find_if(productList.begin(), productList.end(), [id](const Car& p) {return p.getId() == id;});
 	if (it != productList.end())
 	{
 		productList.erase(it);
-		cout << "Produkt zostal usuniety." << endl;
+		cout << "Auto zostalo usuniete." << endl;
 	}
 	else
 	{
-		cout << "Nie znaleziono produktu o podanym ID." << endl;
+		cout << "Nie znaleziono auta o podanym ID." << endl;
 	}
 }
 void program::addTire()
@@ -106,13 +133,27 @@ void program::addTire()
 	cout << "Podaj Speed Rating opony: ";
 	cin >> tireSpeedRating;
 	cout << "Podaj cene opony: ";
-	cin >> tirePrice;
+	cin >> tirePrice; 
 
-	Tire newTire(productListTire.size(), tireWidth, tireRatio, tireRimDiameter, tireLoadIndex, tireConstruction, tireSpeedRating, tirePrice);
+	Tire newTire(productListTire.size(), tireWidth, tireRatio, tireConstruction, tireRimDiameter, tireLoadIndex, tireSpeedRating, tirePrice);
 	productListTire.push_back(newTire);
 	cout << "Produkt zostal dodany." << endl;
 }
 void program::deleteTire()
 {
+	int tireId;
+	cout << "Podaj ID opony do usuniecia";
+	cin >> tireId;
 
+	auto it = find_if(productListTire.begin(), productListTire.end(), [tireId](const Tire& p) {return p.getTireId() == tireId;});
+
+	if (it != productListTire.end())
+	{
+		productListTire.erase(it);
+		cout << "Opona zostala usunieta." << endl;
+	}
+	else
+	{
+		cout << "Nie znaleziono opony o podanym ID." << endl;
+	}
 }

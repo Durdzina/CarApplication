@@ -4,7 +4,7 @@ using namespace std;
 
 class Tire
 {
-public:
+private:
 	int tireId;
 	int tireWidth;
 	int tireRatio;
@@ -14,10 +14,10 @@ public:
 	string tireSpeedRating;
 	long tirePrice;
 
-private:
+public:
 	string toString()
 	{
-		return "ID:" + to_string(tireId) + ", Width:" + to_string(tireWidth) + ", Ratio:" + to_string(tireRatio) + ", Construction:" + tireConstruction + ", Rim Diameter:" + to_string(tireRimDiameter) + ", Load Index:" + to_string(tireLoadIndex) + ", Speed Rating:" + tireSpeedRating + ", Price" + to_string(tirePrice);
+		return "ID:" + to_string(tireId) + ", Width:" + to_string(tireWidth) + ", Ratio:" + to_string(tireRatio) + ", Construction:" + tireConstruction + ", Rim Diameter:" + to_string(tireRimDiameter) + ", Load Index:" + to_string(tireLoadIndex) + ", Speed Rating:" + tireSpeedRating + ", Price:" + to_string(tirePrice);
 	}
 	Tire(int tireId, int tireWidth, int tireRatio, string tireConstruction, int tireRimDiameter, int tireLoadIndex, string tireSpeedRating, long tirePrice)
 	{
