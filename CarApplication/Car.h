@@ -13,7 +13,7 @@ private:
 public:
 	string toString()
 	{
-		return "ID:" + to_string(id) + ". brand:" + brand + ", model:" + model + ", tire:" + tire + ", price:" + to_string(price);
+		return "ID:" + to_string(id) + ", brand:" + brand + ", model:" + model + ", tire:" + tire + ", price:" + to_string(price);
 	}
 	Car(int id, string brand, string model, string tire, long price)
 	{

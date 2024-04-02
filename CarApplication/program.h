@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "Car.h"
+#include "Tire.h"
 using namespace std;
 
 class program
@@ -10,7 +11,10 @@ public:
 
 private:
 	vector<Car> productList = {};
+	vector<Tire> productListTire = {};
 	void displayProducts();
-	void deleteProduct();
-	void addProduct();
+	void deleteCar();
+	void addCar();
+	void addTire();
+	void deleteTire();
 };
